@@ -31,14 +31,17 @@ body {
   }
 }
 
+ul {
+  list-style: none;
+}
 
-#container {
+.flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
-#container .tile {
+.flex .tile {
   flex: 0 1 17%;
   height: 140px;
   margin: 10px 1px;
@@ -65,6 +68,10 @@ body {
 
 #loader {
   text-align: center;
+}
+
+.loaded {
+  display: none
 }
 
 .ring {
