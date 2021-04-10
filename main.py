@@ -4,9 +4,6 @@ import numpy as np
 import re
 from flask import Flask, render_template, request, jsonify
 
-# from anime import top_anime
-# from recommendations import get_recommendations
-
 print('starting')
 filename = 'get_recs.pkl'
 ratings_file = 'ratings_model.pkl'
@@ -34,8 +31,6 @@ def get_recommendations(anime_name):
 @app.route('/', methods = ['GET'])
 def home():
     if request.method == 'GET':
-        # top_20 = top_anime()
-        # print('top', top_20)
         return render_template('index.html')
 
 @app.route('/recommendations/<anime>', methods = ['GET'])
@@ -44,19 +39,6 @@ def recommendations(anime):
         print('anime', anime)
         recs = get_recommendations(anime)
         return {'recs': recs}
-
-# @app.route('/predict', methods = ['POST'])
-# def result():
-#     if request.method == 'POST':
-#         print('POST request form', request.form['name'])
-#         rec_model = get_recommendations(request.form['name'])
-#         try:
-#             rec_arr = list(rec_model.index)
-#             return render_template('recommend.html', recommendations = rec_arr)
-#         except:
-#             print('no recommendations')
-#             return render_template('not_found.html', anime=request.form['name'])
-
 
 
 if __name__ == '__main__':
