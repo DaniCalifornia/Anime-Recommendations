@@ -11,7 +11,9 @@ Ratings based recommendation system that recommends anime similar to those the u
 You need to have a Python environment set up and Flask installed on your machine
 
 1. Clone the repo
+
     git clone https://github.com/DaniCalifornia/Anime-Recommendations
+
 2. Run python main.py
 3. Navigate to http://127.0.0.1:5000/ in your browser
 
@@ -21,7 +23,7 @@ When you navigate the the localhost link, you should see this page
 
   ![home page](https://user-images.githubusercontent.com/74216048/114289921-8fc0cf00-9a49-11eb-9aed-d1b69a646929.png)
 
-Now if you click on one of the tiles (ex. Sailor Moon) you should see a loading screen
+Now if you click on one of the tiles (ex. Haikyuu!!) you should see a loading screen
 
   ![loader](https://user-images.githubusercontent.com/74216048/114289973-f2b26600-9a49-11eb-88b3-446c14d9f942.png)
 

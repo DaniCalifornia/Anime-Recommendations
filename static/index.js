@@ -6,7 +6,7 @@ const loader = document.getElementById('loader')
 const nav = document.getElementById('nav')
 
 // popular anime (in my opinion)
-const popularAnime = ['Naruto', 'One Piece', 'Death Note', 'Sword Art Online', 'Fairy Tale', 'My Hero Academia', 'Haikyuu!!', 'Hunter x Hunter', 'Cowboy Bepop', 'One Punch Man', 'Sailor Moon', 'Dragon Ball', 'Soul Eater', 'Yuri!!! on Ice', 'Bleach']
+const popularAnime = ['Naruto', 'Death Note', 'Sword Art Online', 'Fairy Tale', 'Haikyuu!!', 'Hunter x Hunter', 'One Punch Man', 'Dragon Ball', 'Soul Eater', 'Bleach']
 // array of tile colors
 const colors = ['cyan', 'purple', 'pink', 'blue']
 
@@ -40,13 +40,19 @@ async function getRecs(anime) {
   tiles.style.display = "inline";
   nav.style.display = "inline";
   loader.classList = 'loaded'
-  header.innerText = `People who watched ${recsArray.shift()} also enjoyed:`
-  // remove current anime tiles
-  while(list.firstChild) {
-    list.removeChild(list.firstChild)
+  // if selected anime not found, reload same tiles
+  if (recsArray === 'Not Found') {
+    header.innerText = 'Anime Not Found. Try again.'
   }
-  // replace tiles with recommenation anime tiles
-  animeList(recsArray)
+  else {
+    header.innerText = `People who watched ${recsArray.shift()} also enjoyed:`
+    // remove current anime tiles
+    while(list.firstChild) {
+      list.removeChild(list.firstChild)
+    }
+    // replace tiles with recommenation anime tiles
+    animeList(recsArray)
+  }
 }
 
 tiles.addEventListener('click', (event) => {
