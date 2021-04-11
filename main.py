@@ -14,13 +14,11 @@ app = Flask(__name__)
 
 def get_recommendations(anime_name):
   try:
-      print('NAME', anime_name)
       anime_user_ratings = get_recs[anime_name]
       similar_to_anime = get_recs.corrwith(anime_user_ratings)
       corr_anime = pd.DataFrame(similar_to_anime, columns = ['Correlation'])
       corr_anime.dropna(inplace = True)
       corr_anime = corr_anime.join(get_ratings['num_ratings'])
-      print('return successful')
       return corr_anime[corr_anime['num_ratings'] > 1000].sort_values('Correlation', ascending = False).iloc[0:10, :].index.tolist()
   except KeyError:
       print('Anime not found')
@@ -36,7 +34,6 @@ def home():
 @app.route('/recommendations/<anime>', methods = ['GET'])
 def recommendations(anime):
     if request.method == 'GET':
-        print('anime', anime)
         recs = get_recommendations(anime)
         return {'recs': recs}
 
